@@ -1,0 +1,13 @@
+### IntelliJ IDEA ###
+.idea/
+*.iml
+*.iws
+*.ipr
+
+### Configuración local (secretos) ###
+**/src/main/resources/application.properties
+**/src/main/resources/application-local.properties
+
+### Sistema operativo ###
+.DS_Store
+Thumbs.db
