@@ -1,14 +1,16 @@
 package com.juari.store.model.entity;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "product")
+@Builder
 public class Product {
 
     @Id
@@ -25,6 +27,7 @@ public class Product {
     private BigDecimal price;
 
     @Column(nullable = false)
+    @Builder.Default
     private Integer stock = 0;
 
     @Column(name = "image_url", length = 255)
