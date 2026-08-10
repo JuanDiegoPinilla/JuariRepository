@@ -21,6 +21,4 @@ public class ProductController {
     public ResponseEntity<List<ProductCatalogResponse>> getCatalog(){
         return ResponseEntity.ok(productService.getAllProducts());
     }
-
-    //HOLA
 }
