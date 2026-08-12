@@ -10,4 +10,6 @@ public interface IProductService {
     public List<ProductCatalogResponse> getAllProducts();
 
     public ProductDetailResponse getProductById(Long id);
+
+    List<ProductCatalogResponse> getProductsByCategory(Long categoryId);
 }

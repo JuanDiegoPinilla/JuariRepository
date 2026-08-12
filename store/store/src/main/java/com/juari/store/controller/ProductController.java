@@ -4,13 +4,11 @@ import com.juari.store.dto.ProductCatalogResponse;
 import com.juari.store.dto.ProductDetailResponse;
 import com.juari.store.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,7 +38,32 @@ public class ProductController {
             description = "Producto no encontrado"
     )
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDetailResponse> getProductById(@PathVariable Long id) {
-        return ResponseEntity.ok(productService.getProductById(id));
+    public ResponseEntity<ProductDetailResponse> getProductById(
+            @PathVariable Long id) {
+
+        return ResponseEntity.ok(
+                productService.getProductById(id)
+        );
+    }
+
+    @Operation(
+            summary = "Filtrar productos por categoría",
+            description = "Obtiene todos los productos pertenecientes a una categoría específica."
+    )
+    @ApiResponse(
+            responseCode = "200",
+            description = "Productos filtrados correctamente"
+    )
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<ProductCatalogResponse>> getProductsByCategory(
+            @Parameter(
+                    description = "ID de la categoría",
+                    example = "1"
+            )
+            @PathVariable Long categoryId) {
+
+        return ResponseEntity.ok(
+                productService.getProductsByCategory(categoryId)
+        );
     }
 }
