@@ -8,7 +8,7 @@ import java.util.List;
 public interface IProductService {
 
     public List<ProductCatalogResponse> getAllProducts();
-
+    public List<ProductCatalogResponse> getProductsByName(String name);
     public ProductDetailResponse getProductById(Long id);
 
     List<ProductCatalogResponse> getProductsByCategory(Long categoryId);
