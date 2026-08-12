@@ -44,5 +44,13 @@ public class ProductService implements IProductService{
                 .toList();
     }
 
+    @Override
+    public List<ProductCatalogResponse> getProductsByName(String name) {
+        return productRepository.findByNameContainingIgnoreCase(name)
+                .stream()
+                .map(productMapper::toCatalogResponse)
+                .toList();
+    }
+
 
 }
