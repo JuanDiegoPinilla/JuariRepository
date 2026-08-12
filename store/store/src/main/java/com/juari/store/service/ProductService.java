@@ -36,5 +36,13 @@ public class ProductService implements IProductService{
         return productMapper.toProductDetailResponse(product);
     }
 
+    @Override
+    public List<ProductCatalogResponse> getProductsByCategory(Long categoryId) {
+        return productRepository.findByCategoryId(categoryId)
+                .stream()
+                .map(productMapper::toCatalogResponse)
+                .toList();
+    }
+
 
 }
